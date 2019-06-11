@@ -1,5 +1,6 @@
---- glpk/examples/Makefile.in.orig	2013-01-28 01:00:00.000000000 -0800
-+++ glpk/examples/Makefile.in	2017-11-29 16:48:39.765526637 -0800
+
+--- glpk/examples/Makefile.in	2013-01-28 01:00:00.000000000 -0800
++++ glpk.OLD/examples/Makefile.in	2019-06-11 10:35:54.910948733 -0700
 @@ -70,7 +70,7 @@
  am_glpsol_OBJECTS = glpsol.$(OBJEXT)
  glpsol_OBJECTS = $(am_glpsol_OBJECTS)
@@ -26,28 +27,9 @@
  	echo " ( cd '$(DESTDIR)$(bindir)' && rm -f" $$files ")"; \
  	cd "$(DESTDIR)$(bindir)" && rm -f $$files
  
---- glpk/src/Makefile.in.orig	2013-01-28 01:00:00.000000000 -0800
-+++ glpk/src/Makefile.in	2017-11-29 16:46:02.780518740 -0800
-@@ -263,7 +263,7 @@
- top_builddir = @top_builddir@
- top_srcdir = @top_srcdir@
- include_HEADERS = glpk.h
--lib_LTLIBRARIES = libglpk.la
-+lib_LTLIBRARIES = libcoinglpk.la
- libglpk_la_LDFLAGS = -version-info 33:0:0 \
- -export-symbols-regex '^(glp_|_glp_lpx_).*'
- 
-@@ -467,7 +467,7 @@
- 	  echo rm -f $${locs}; \
- 	  rm -f $${locs}; \
- 	}
--libglpk.la: $(libglpk_la_OBJECTS) $(libglpk_la_DEPENDENCIES) $(EXTRA_libglpk_la_DEPENDENCIES) 
-+libcoinglpk.la: $(libglpk_la_OBJECTS) $(libglpk_la_DEPENDENCIES) $(EXTRA_libglpk_la_DEPENDENCIES) 
- 	$(libglpk_la_LINK) -rpath $(libdir) $(libglpk_la_OBJECTS) $(libglpk_la_LIBADD) $(LIBS)
- 
- mostlyclean-compile:
---- glpk/src/glplpx01.c.orig	2017-11-29 16:59:03.171574531 -0800
-+++ glpk/src/glplpx01.c	2017-11-28 13:18:03.394933033 -0800
+
+--- glpk/src/glplpx01.c	2019-06-11 10:37:36.472364887 -0700
++++ glpk.OLD/src/glplpx01.c	2019-06-11 10:35:54.912948721 -0700
 @@ -520,7 +520,7 @@
        ret = glp_simplex(lp, &parm);
        switch (ret)
@@ -57,14 +39,29 @@
           case GLP_ESING:
           case GLP_ECOND:
           case GLP_EBOUND:  ret = LPX_E_FAULT;   break;
---- glpk/src/Makefile.in.orig	2018-10-16 21:18:30.860327447 +0200
-+++ glpk/src/Makefile.in	2018-10-16 21:19:44.163286871 +0200
-@@ -262,7 +262,7 @@
+
+--- glpk/src/Makefile.in	2013-01-28 01:00:00.000000000 -0800
++++ glpk.OLD/src/Makefile.in	2019-06-11 10:37:20.857454659 -0700
+@@ -262,10 +262,10 @@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
 -include_HEADERS = glpk.h
+-lib_LTLIBRARIES = libglpk.la
 +include_HEADERS = glpk.h amd/amd.h
- lib_LTLIBRARIES = libcoinglpk.la
++lib_LTLIBRARIES = libcoinglpk.la
  libglpk_la_LDFLAGS = -version-info 33:0:0 \
- -export-symbols-regex '^(glp_|_glp_lpx_).*'
+--export-symbols-regex '^(glp_|_glp_lpx_).*'
++-export-symbols-regex '^(glp_|_glp_lpx_|_glp_amd_defaults|_glp_amd_order).*'
+ 
+ libglpk_la_SOURCES = \
+ glpapi01.c \
+@@ -467,7 +467,7 @@
+ 	  echo rm -f $${locs}; \
+ 	  rm -f $${locs}; \
+ 	}
+-libglpk.la: $(libglpk_la_OBJECTS) $(libglpk_la_DEPENDENCIES) $(EXTRA_libglpk_la_DEPENDENCIES) 
++libcoinglpk.la: $(libglpk_la_OBJECTS) $(libglpk_la_DEPENDENCIES) $(EXTRA_libglpk_la_DEPENDENCIES) 
+ 	$(libglpk_la_LINK) -rpath $(libdir) $(libglpk_la_OBJECTS) $(libglpk_la_LIBADD) $(LIBS)
+ 
+ mostlyclean-compile:
