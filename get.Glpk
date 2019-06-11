@@ -48,9 +48,11 @@ mv glpk-${glpk_ver} glpk
 
 echo " "
 echo "Done downloading the source code for GLPK."
-echo "Applying patch file."
 
-patch -p0 < glpk.patch
+if test -r glpk.patch ; then
+  echo "Applying patch file."
+  patch -p0 < glpk.patch
+fi
 
 echo "Touch every source file to force rebuild of whole package."
 
