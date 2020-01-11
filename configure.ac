@@ -44,7 +44,7 @@ AC_COIN_PROG_LIBTOOL
 # static library generation. Pass CFLAGS via a cache variable to avoid
 # complaints about changing the environment.
 
-ac_configure_args="$ac_configure_args --includedir=\\\${prefix}/include/coin-or/ThirdParty"
+ac_configure_args="$ac_configure_args --includedir=\\\${prefix}/include/coin-or/glpk"
 ac_configure_args="$ac_configure_args --enable-reentrant=no"
 ac_configure_args="$ac_configure_args --enable-static=no"
 
@@ -60,4 +60,3 @@ AC_CONFIG_FILES([Makefile coinglpk.pc])
 AC_CONFIG_HEADER([config_glpk.h])
 
 AC_COIN_FINALIZE
-
