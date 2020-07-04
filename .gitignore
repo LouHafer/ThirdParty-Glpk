@@ -1,3 +1,6 @@
-aclocal.m4
-/autom4te.cache
+aclocal.m4*
+autom4te.cache/
 /glpk
+/glpk_config_files/config.h.in
+/glpk_config_files/config.sub
+
