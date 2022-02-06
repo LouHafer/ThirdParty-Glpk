@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script
 
-AC_INIT([GLPK], [4.65], [bug-glpk@gnu.org])
+AC_INIT([GLPK], [5.0], [bug-glpk@gnu.org])
 
 AC_CONFIG_SRCDIR([src/glpk.h])
 
@@ -28,7 +28,7 @@ AC_COIN_PROG_LIBTOOL
 AC_CONFIG_HEADERS([config.h])
 
 AC_ARG_WITH(gmp,
-AC_HELP_STRING([--with-gmp],
+AS_HELP_STRING([--with-gmp],
    [use GNU MP bignum library [[default=no]]]),
    [case $withval in
       yes | no) ;;
@@ -37,7 +37,7 @@ AC_HELP_STRING([--with-gmp],
    [with_gmp=no])
 
 AC_ARG_ENABLE(dl,
-AC_HELP_STRING([--enable-dl],
+AS_HELP_STRING([--enable-dl],
    [enable shared library support [[default=no]]]),
    [case $enableval in
       yes | ltdl | dlfcn | no) ;;
@@ -46,7 +46,7 @@ AC_HELP_STRING([--enable-dl],
    [enable_dl=no])
 
 AC_ARG_ENABLE(odbc,
-AC_HELP_STRING([--enable-odbc],
+AS_HELP_STRING([--enable-odbc],
    [enable MathProg ODBC support [[default=no]]]),
    [case $enableval in
       yes | unix | no) ;;
@@ -55,7 +55,7 @@ AC_HELP_STRING([--enable-odbc],
    [enable_odbc=no])
 
 AC_ARG_ENABLE(mysql,
-AC_HELP_STRING([--enable-mysql],
+AS_HELP_STRING([--enable-mysql],
    [enable MathProg MySQL support [[default=no]]]),
    [case $enableval in
       yes | no) ;;
@@ -64,7 +64,7 @@ AC_HELP_STRING([--enable-mysql],
    [enable_mysql=no])
 
 AC_ARG_ENABLE(reentrant,
-AC_HELP_STRING([--enable-reentrant],
+AS_HELP_STRING([--enable-reentrant],
    [enable reentrancy support [[default=yes]]]),
    [case $enableval in
       yes | no) ;;

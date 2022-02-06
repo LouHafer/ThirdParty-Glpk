@@ -11,7 +11,7 @@
 set -e
 
 wgetcmd=wget
-glpk_ver=4.65
+glpk_ver=5.0
 
 if [[ ! -r glpk_config.patch ]] ; then
   echo "Cannot find configuration patch file glpk_config.patch. Aborting"
@@ -52,11 +52,18 @@ mv glpk/m4 glpk/m4.hidden
 
 echo "Patching configuration source files ..."
 patch -p0 < glpk_config.patch
+mv glpk/configure.ac glpk/configure.ac.todelete
+sed -e 's/AC_HELP_STRING/AS_HELP_STRING/' \
+    glpk/configure.ac.todelete > glpk/configure.ac
+rm glpk/configure.ac.todelete
 
 echo "Running autotools on patched source ..."
 run_autotools -f glpk
 
 echo "Capturing modified configuration files in glpk_config_files/..."
+if test -d glpk_config_files ; then
+  rm -rf glpk_config_files
+fi
 for f in "${newConfigFiles[@]}" ; do
   mkdir -p `dirname glpk_config_files/$f`
   cp -f glpk/$f glpk_config_files/$f

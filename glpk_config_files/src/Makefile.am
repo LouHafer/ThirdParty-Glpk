@@ -26,7 +26,7 @@ libcoinglpk_la_CPPFLAGS = \
 -I$(srcdir)/zlib
 
 libcoinglpk_la_LDFLAGS = \
--version-info 43:0:3 \
+-version-info 43:1:3 \
 -export-symbols-regex '^glp_*' \
 ${NOUNDEFINED}
 
@@ -118,7 +118,6 @@ draft/glpapi09.c \
 draft/glpapi10.c \
 draft/glpapi12.c \
 draft/glpapi13.c \
-draft/glphbm.c \
 draft/glpios01.c \
 draft/glpios02.c \
 draft/glpios03.c \
@@ -128,9 +127,7 @@ draft/glpios11.c \
 draft/glpios12.c \
 draft/glpipm.c \
 draft/glpmat.c \
-draft/glprgr.c \
 draft/glpscl.c \
-draft/glpspm.c \
 draft/glpssx01.c \
 draft/glpssx02.c \
 draft/lux.c \
@@ -162,6 +159,7 @@ misc/ffalg.c \
 misc/fp2rat.c \
 misc/fvs.c \
 misc/gcd.c \
+misc/hbm.c \
 misc/jd.c \
 misc/keller.c \
 misc/ks.c \
@@ -172,9 +170,11 @@ misc/mygmp.c \
 misc/okalg.c \
 misc/qmd.c \
 misc/relax4.c \
+misc/rgr.c \
 misc/rng.c \
 misc/rng1.c \
 misc/round2n.c \
+misc/spm.c \
 misc/str2int.c \
 misc/str2num.c \
 misc/strspx.c \

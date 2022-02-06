@@ -71,7 +71,7 @@
  
 -libglpk_la_LDFLAGS = \
 +libcoinglpk_la_LDFLAGS = \
- -version-info 43:0:3 \
+ -version-info 43:1:3 \
  -export-symbols-regex '^glp_*' \
  ${NOUNDEFINED}
  
